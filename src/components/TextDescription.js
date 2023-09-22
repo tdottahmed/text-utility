@@ -47,7 +47,7 @@ export default function TextDescription(props) {
 
   const changeHandler = (event) => {
     setText(event.target.value);
-    let lenght = text.split(" ").filter((element) => {
+    let lenght = text.split(/\s+/).filter((element) => {
       return element.length !== 0;
     }).length;
     if (startTime === null) {
@@ -79,13 +79,13 @@ export default function TextDescription(props) {
       .trim()
       .replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ""));
     setText(newText);
-    // console.log(newText);
+    props.showAlert("Text Converted to Camel Case.", "success");
   };
 
   const clickSnakCase = () => {
     let newText = text.replace(/\s+/g, "_");
     setText(newText);
-    // console.log(newText);
+    props.showAlert("Text Converted to Snake Case.", "success");
   };
   const [text, setText] = useState("");
 
@@ -115,7 +115,7 @@ export default function TextDescription(props) {
         <div className="mt-2">
           <button
             disabled={text.length === 0}
-            className="btn btn-primary "
+            className="btn btn-primary mb-2 mx-1"
             onClick={clickUpHandler}
           >
             Convert to Uppercase
@@ -123,46 +123,46 @@ export default function TextDescription(props) {
 
           <button
             disabled={text.length === 0}
-            className="btn btn-info mx-3"
+            className="btn btn-info mb-2 mx-1"
             onClick={clickLowerHandler}
           >
             Convert to Lower Case
           </button>
-
           <button
             disabled={text.length === 0}
-            className="btn btn-danger"
-            onClick={clickRemoveHandler}
-          >
-            Clear Text
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-success mx-3"
-            onClick={clickCopyHandler}
-          >
-            Copy Text
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-warning mx-3"
-            onClick={clickExtraSpaces}
-          >
-            Remove Extra space
-          </button>
-          <button
-            disabled={text.length === 0}
-            className="btn btn-success"
+            className="btn btn-success rounded mb-2 mx-1"
             onClick={clickCamelCase}
           >
             Convert to CamelCase
           </button>
           <button
             disabled={text.length === 0}
-            className="btn btn-success mx-3"
+            className="btn btn-success mb-2 mx-1"
             onClick={clickSnakCase}
           >
             Convert to Snake_case
+          </button>
+
+          <button
+            disabled={text.length === 0}
+            className="btn btn-info mb-2 mx-1"
+            onClick={clickCopyHandler}
+          >
+            Copy Text
+          </button>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-warning mb-2 mx-1"
+            onClick={clickExtraSpaces}
+          >
+            Remove Extra space
+          </button>
+          <button
+            disabled={text.length === 0}
+            className="btn btn-danger mb-2 mx-1"
+            onClick={clickRemoveHandler}
+          >
+            Clear Text
           </button>
         </div>
       </div>
@@ -178,7 +178,7 @@ export default function TextDescription(props) {
           Total Words:
           <span className="border border-success p-2 ml-3 font-weight-bolder">
             {
-              text.split(" ").filter((element) => {
+              text.split(/\s+/).filter((element) => {
                 return element.length !== 0;
               }).length
             }

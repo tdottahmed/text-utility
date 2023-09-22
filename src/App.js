@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextDescription from "./components/TextDescription";
 import Alert from "./components/Alert";
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setmode] = useState("light");
@@ -41,10 +41,10 @@ function App() {
 
         <Alert alert={alert} />
         <div className="container my-3">
-          {/* <Routes>
-            <Route
-              path="/"
-              element={ */}
+          {/* <Routes> */}
+            {/* <Route */}
+              {/* path="/" */}
+              {/* element={ */}
                 <TextDescription
                   title="Enter Your Text"
                   heading="Enter Your Text to analyze"
@@ -53,8 +53,8 @@ function App() {
                 />
               {/* }
             /> */}
-            {/* <Route path="/about" element={<About alert={alert} />} />
-          </Routes> */}
+            {/* <Route path="/about" element={<About alert={alert} />} /> */}
+          {/* </Routes> */}
         </div>
       {/* </Router> */}
     </>
