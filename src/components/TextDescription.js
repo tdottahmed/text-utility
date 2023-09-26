@@ -59,9 +59,7 @@ export default function TextDescription(props) {
   };
 
   const clickCopyHandler = () => {
-    let text = document.getElementById("myText");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied Successfully.", "success");
   };
 
@@ -217,9 +215,11 @@ export default function TextDescription(props) {
           minitue
         </p>
         <hr />
-        <h2>Text Preview</h2>
-        <hr />
-        <p className="text-justify">{text}</p>
+        <div className="container">
+          <h2>Text Preview</h2>
+          <hr />
+          <p className="text-justify">{text}</p>
+        </div>
       </div>
     </>
   );
